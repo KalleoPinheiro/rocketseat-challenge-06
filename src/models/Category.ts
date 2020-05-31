@@ -4,10 +4,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-  ManyToOne,
 } from 'typeorm';
-
-import Transaction from './Transaction';
 
 @Entity('categories')
 class Category {
@@ -16,9 +13,6 @@ class Category {
 
   @Column()
   title: string;
-
-  @ManyToOne(() => Transaction, transaction => transaction.category)
-  transaction: string;
 
   @CreateDateColumn()
   created_at: Date;

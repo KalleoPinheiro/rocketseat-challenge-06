@@ -13,6 +13,7 @@ export default class RelationTransactionCategory1587681785729
       new TableColumn({
         name: 'category_id',
         type: 'uuid',
+        isNullable: true,
       }),
     );
 

@@ -4,8 +4,8 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToMany,
   JoinColumn,
+  ManyToOne,
 } from 'typeorm';
 
 import TypeTransaction from '../enums/TypeTransactions.enum';
@@ -22,15 +22,15 @@ class Transaction {
   @Column('text')
   type: TypeTransaction;
 
-  @Column()
+  @Column('decimal')
   value: number;
 
   @Column()
   category_id: string;
 
-  @OneToMany(() => Category, category => category.transaction)
+  @ManyToOne(() => Category)
   @JoinColumn({ name: 'category_id' })
-  category: Category[];
+  category: Category;
 
   @CreateDateColumn()
   created_at: Date;
