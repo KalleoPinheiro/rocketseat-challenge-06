@@ -42,19 +42,19 @@ class TransactionsRepository extends Repository<Transaction> {
 
     const income =
       balance.income?.reduce(
-        (acc: any, prev: Transaction) => acc + prev.value,
+        (acc: number, prev: Transaction) => +acc + +prev.value,
         0,
       ) || 0;
 
     const outcome =
       balance.outcome?.reduce(
-        (acc: any, prev: Transaction) => acc + prev.value,
+        (acc: number, prev: Transaction) => +acc + +prev.value,
         0,
       ) || 0;
 
     return {
       transactions,
-      balance: { income, outcome, total: income - outcome },
+      balance: { income, outcome, total: +income - +outcome },
     };
   }
 }
